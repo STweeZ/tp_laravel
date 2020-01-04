@@ -154,11 +154,11 @@ class JeuController extends Controller
     public function upload(Request $request) {
         if ($request->hasFile('document')  && $request->file('document')->isValid()) {
             $file = $request->file('document');
-            $msg = sprintf("Récupération d'un fichier %s (%s) de taille %d extension %s", $file->path(), $file->getClientOriginalName(), $file->getSize(), $file->extension());
+            $msg = sprintf("Récupération d'un fichier %s (%s) de taille %d extension %s, veuillez retourner à la page d'avant.", $file->path(), $file->getClientOriginalName(), $file->getSize(), $file->extension());
             $id=DB::table('pweb.jeux')->select('id')->max('id');
             $file->storeAs('images',$id+1);
         } else {
-            $msg = "Aucun fichier téléchargé";
+            $msg = "Aucun fichier téléchargé, veuillez retourner à la page d'avant.";
         }
         die($msg);
     }
@@ -166,10 +166,10 @@ class JeuController extends Controller
     public function upload2(Request $request,$id) {
         if ($request->hasFile('document')  && $request->file('document')->isValid()) {
             $file = $request->file('document');
-            $msg = sprintf("Récupération d'un fichier %s (%s) de taille %d extension %s", $file->path(), $file->getClientOriginalName(), $file->getSize(), $file->extension());
+            $msg = sprintf("Récupération d'un fichier %s (%s) de taille %d extension %s, veuillez retourner à la page d'avant.", $file->path(), $file->getClientOriginalName(), $file->getSize(), $file->extension());
             $file->storeAs('images',$id);
         } else {
-            $msg = "Aucun fichier téléchargé";
+            $msg = "Aucun fichier téléchargé, veuillez retourner à la page d'avant.";
         }
         die($msg);
     }
