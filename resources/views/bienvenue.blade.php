@@ -1,0 +1,2 @@
+Bienvenue, {!! $nom !!}.
+Bienvenue, {{ time() }}.
